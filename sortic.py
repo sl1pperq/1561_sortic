@@ -35,51 +35,71 @@ def rrr(firstArray, secondArray):
     return rab(firstArray), rab(secondArray)
 
 
-a = []
-b = []
+one = []
+two = []
 userInput = input()
 
 while userInput != "!":
-    a.append(int(userInput))
+    one.append(int(userInput))
     userInput = input()
 
-if len(a) > 0:
-    tempoRar = sorted(a)
-    while a != tempoRar:
-        while len(a) > 1:
-            if a[0] == max(a[0], a[1]):
-                temp = p(b, a)
+if len(one) > 0:
+    tempoRar = sorted(one)
+    while one != tempoRar:
+        while len(one) > 1:
+            if one[0] == max(one[0], one[1]):
+                temp = p(two, one)
+
                 print("pb")
-                a = temp[1]
-                b = r(temp[0])
+
+                one = temp[1]
+                two = r(temp[0])
+
                 print("rb")
             else:
-                a = s(a)
+                one = s(one)
+
                 print("sa")
-                temp = p(b, a)
+
+                temp = p(two, one)
+
                 print("pb")
-                a = temp[1]
-                b = r(temp[0])
+
+                one = temp[1]
+                two = r(temp[0])
+
                 print("rb")
-        while len(b) > 1:
-            if b[0] == min(b[0], b[1]):
-                temp = p(a, b)
+        while len(two) > 1:
+            if two[0] == min(two[0], two[1]):
+                temp = p(one, two)
+
                 print("pa")
-                b = temp[1]
-                a = r(temp[0])
+
+                two = temp[1]
+                one = r(temp[0])
+
                 print("ra")
             else:
-                b = s(b)
+                two = s(two)
+
                 print("sb")
-                temp = p(a, b)
+
+                temp = p(one, two)
+
                 print("pa")
-                b = temp[1]
-                a = r(temp[0])
+
+                two = temp[1]
+                one = r(temp[0])
+
                 print("ra")
-        temp = p(a, b)
+
+        temp = p(one, two)
+
         print("pa")
-        b = temp[1]
-        a = r(temp[0])
+
+        two = temp[1]
+        one = r(temp[0])
+
         print("ra")
 
-print(f"{a}")
+print(one)
