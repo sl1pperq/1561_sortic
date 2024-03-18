@@ -60,14 +60,17 @@ for x in commList:
         b = s(b)
     if x == "ss":
         temp = ss(a, b)
+
         a = temp[0]
         b = temp[1]
     if x == "pa":
         temp = p(a, b)
+
         a = temp[0]
         b = temp[1]
     if x == "pb":
         temp = p(b, a)
+
         b = temp[0]
         a = temp[1]
     if x == "ra":
@@ -76,6 +79,7 @@ for x in commList:
         b = r(b)
     if x == "rr":
         temp = rr(a, b)
+
         a = temp[0]
         b = temp[1]
     if x == "rra":
@@ -84,6 +88,7 @@ for x in commList:
         b = rab(b)
     if x == "rrr":
         temp = rrr(a, b)
+
         a = temp[0]
         b = temp[1]
 
