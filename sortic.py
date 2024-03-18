@@ -1,105 +1,73 @@
-def s(array):
-    if len(array) > 1:
-        array[0], array[1] = array[1], array[0]
-    return array
-
-
-def ss(firstArray, secondArray):
-    return s(firstArray), s(secondArray)
-
-
-def p(firstArray, secondArray):
-    if len(secondArray) > 0:
-        firstArray = [secondArray[0]] + firstArray
-        secondArray.pop(0)
-        return firstArray, secondArray
-
-
-def r(array):
-    temp = array.pop(0)
-    array.append(temp)
-    return array
-
-
-def rr(firstArray, secondArray):
-    return r(firstArray), r(secondArray)
-
-
-def rab(array):
-    temp = array.pop(len(array) - 1)
-    lst = [temp] + array
+def s(lst):
+    if len(lst) > 1:
+        lst[0], lst[1] = lst[1], lst[0]
     return lst
 
 
-def rrr(firstArray, secondArray):
-    return rab(firstArray), rab(secondArray)
+def ss(lst1, lst2):
+    return s(lst1), s(lst2)
+
+
+def p(lst1, lst2):
+    if len(lst2) > 0:
+        lst1 = [lst2[0]] + lst1
+        lst2.pop(0)
+        return lst1, lst2
+
+
+def r(lst):
+    temp = lst.pop(0)
+    lst.append(temp)
+    return lst
+
+
+def rr(lst1, lst2):
+    return r(lst1), r(lst2)
+
+
+def rab(lst):
+    temp = lst.pop(len(lst) - 1)
+    lst = [temp] + lst
+    return lst
+
+
+def rrr(lst1, lst2):
+    return rab(lst1), rab(lst2)
 
 
 a = []
 b = []
-userInput = input()
+inp = input()
 
-while userInput != "!":
-    a.append(int(userInput))
-    userInput = input()
+while inp != "!":
+    a.append(int(inp))
+    inp = input()
 
 if len(a) > 0:
-    tempoRar = sorted(a)
-    while a != tempoRar:
+    temporar = sorted(a)
+    while a != temporar:
         while len(a) > 1:
             if a[0] == max(a[0], a[1]):
                 temp = p(b, a)
-
-                print("pb")
-
                 a = temp[1]
                 b = r(temp[0])
-
-                print("rb")
             else:
                 a = s(a)
-
-                print("sa")
-
                 temp = p(b, a)
-
-                print("pb")
-
                 a = temp[1]
                 b = r(temp[0])
-
-                print("rb")
         while len(b) > 1:
             if b[0] == min(b[0], b[1]):
                 temp = p(a, b)
-
-                print("pa")
-
                 b = temp[1]
                 a = r(temp[0])
-
-                print("ra")
             else:
                 b = s(b)
-
-                print("sb")
-
                 temp = p(a, b)
-
-                print("pa")
-
                 b = temp[1]
                 a = r(temp[0])
-
-                print("ra")
-
         temp = p(a, b)
-
-        print("pa")
-
         b = temp[1]
         a = r(temp[0])
-
-        print("ra")
 
 print(a)
