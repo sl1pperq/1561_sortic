@@ -1,98 +1,88 @@
-def s(array):
-    if len(array) > 1:
-        array[0], array[1] = array[1], array[0]
-    return array
+def sa_sb(a):
+    if len(a) > 1:
+        a[0], a[1] = a[1], a[0]
+    return a
 
 
-def ss(firstArray, secondArray):
-    return s(firstArray), s(secondArray)
+def ss(a, b):
+    return sa_sb(a), sa_sb(b)
 
 
-def p(firstArray, secondArray):
-    if len(secondArray) > 0:
-        firstArray = [secondArray[0]] + firstArray
-        secondArray.pop(0)
-        return firstArray, secondArray
+def pa_pb(a, b):
+    if len(b) > 0:
+        a = [b[0]] + a
+        b.pop(0)
+        return a, b
 
 
-def r(array):
-    temp = array.pop(0)
-    array.append(temp)
-    return array
+def ra_rb(a):
+    c = a.pop(0)
+    a.append(c)
+    return a
 
 
-def rr(firstArray, secondArray):
-    return r(firstArray), r(secondArray)
+def rr(a, b):
+    return ra_rb(a), ra_rb(b)
 
 
-def rab(lst):
-    temp = lst.pop(len(lst) - 1)
-    lst = [temp] + lst
-    return lst
+def raa_rab(a):
+    c = a.pop(len(a) - 1)
+    a = [c] + a
+    return a
 
 
-def rrr(firstArray, secondArray):
-    return rab(firstArray), rab(secondArray)
+def rrr(a, b):
+    return raa_rab(a), raa_rab(b)
 
 
 a = []
 b = []
-commList = []
+comm = []
+inp = input()
+while inp != "!":
+    a.append(int(inp))
+    inp = input()
+inp = input()
+while inp != "*":
+    comm.append(inp)
+    inp = input()
+sortic = sorted(a)
+for command in comm:
+    if len(a) > 0:
+        if command == "sa":
+            a = sa_sb(a)
+        if command == "sb":
+            b = sa_sb(b)
+        if command == "ss":
+            c = ss(a, b)
+            a = c[0]
+            b = c[1]
+        if command == "pa":
+            c = pa_pb(a, b)
+            a = c[0]
+            b = c[1]
+        if command == "pb":
+            c = pa_pb(b, a)
+            b = c[0]
+            a = c[1]
+        if command == "ra":
+            a = ra_rb(a)
+        if command == "rb":
+            b = ra_rb(b)
+        if command == "rr":
+            c = rr(a, b)
+            a = c[0]
+            b = c[1]
+        if command == "rra":
+            a = raa_rab(a)
+        if command == "rrb":
+            b = raa_rab(b)
+        if command == "rrr":
+            c = rrr(a, b)
+            a = c[0]
+            b = c[1]
 
-userInput = input()
-
-while userInput != "!":
-    a.append(int(userInput))
-    userInput = input()
-
-userInput = input()
-
-while userInput != "*":
-    commList.append(userInput)
-    userInput = input()
-
-tempoRar = sorted(a)
-
-for x in commList:
-    if x == "sa":
-        a = s(a)
-    if x == "sb":
-        b = s(b)
-    if x == "ss":
-        temp = ss(a, b)
-
-        a = temp[0]
-        b = temp[1]
-    if x == "pa":
-        temp = p(a, b)
-
-        a = temp[0]
-        b = temp[1]
-    if x == "pb":
-        temp = p(b, a)
-
-        b = temp[0]
-        a = temp[1]
-    if x == "ra":
-        a = r(a)
-    if x == "rb":
-        b = r(b)
-    if x == "rr":
-        temp = rr(a, b)
-
-        a = temp[0]
-        b = temp[1]
-    if x == "rra":
-        a = rab(a)
-    if x == "rrb":
-        b = rab(b)
-    if x == "rrr":
-        temp = rrr(a, b)
-
-        a = temp[0]
-        b = temp[1]
-
-if a == tempoRar:
+if a == sortic:
     print("OK")
 else:
     print("KO")

@@ -1,3 +1,5 @@
+from colorama import Fore
+
 def s(lst):
     if len(lst) > 1:
         lst[0], lst[1] = lst[1], lst[0]
@@ -35,39 +37,45 @@ def rrr(lst1, lst2):
     return rab(lst1), rab(lst2)
 
 
-a = []
-b = []
-inp = input()
+def custom_sort(a):
+    b = []
 
+    while a != sorted(a):
+        while len(a) > 1:
+            if a[0] == max(a[0], a[1]):
+                b = r(p(b, a)[0])
+                print(Fore.BLUE, "pb")
+                print(Fore.GREEN, "rb")
+            else:
+                a = s(a)
+                b = r(p(b, a)[0])
+                print(Fore.MAGENTA, "sa")
+                print(Fore.BLUE, "pb")
+                print(Fore.GREEN, "rb")
+
+        while len(b) > 1:
+            if b[0] == min(b[0], b[1]):
+                a = r(p(a, b)[0])
+                print(Fore.YELLOW, "pa")
+                print(Fore.BLACK, "ra")
+            else:
+                b = s(b)
+                a = r(p(a, b)[0])
+                print(Fore.RED, "sb")
+                print(Fore.YELLOW, "pa")
+                print(Fore.CYAN, "ra")
+
+        a = r(p(a, b)[0])
+        print(Fore.YELLOW, "pa")
+        print(Fore.BLACK, "ra")
+    print(a)
+
+
+a = []
+inp = input()
 while inp != "!":
     a.append(int(inp))
     inp = input()
 
 if len(a) > 0:
-    temporar = sorted(a)
-    while a != temporar:
-        while len(a) > 1:
-            if a[0] == max(a[0], a[1]):
-                temp = p(b, a)
-                a = temp[1]
-                b = r(temp[0])
-            else:
-                a = s(a)
-                temp = p(b, a)
-                a = temp[1]
-                b = r(temp[0])
-        while len(b) > 1:
-            if b[0] == min(b[0], b[1]):
-                temp = p(a, b)
-                b = temp[1]
-                a = r(temp[0])
-            else:
-                b = s(b)
-                temp = p(a, b)
-                b = temp[1]
-                a = r(temp[0])
-        temp = p(a, b)
-        b = temp[1]
-        a = r(temp[0])
-
-print(a)
+    custom_sort(a)
